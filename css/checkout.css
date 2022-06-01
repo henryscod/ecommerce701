@@ -1,0 +1,51 @@
+
+
+.table{
+  background-color: #fff;
+}
+
+.cart_cantidad_sumar{
+  width: 30px;
+  height: 30px;
+  padding: 2px 0 0 0;
+  
+}
+
+.cart_cantidad_restar{
+  width: 30px;
+  height: 30px;
+  padding: 2px 0 0 0;
+  
+}
+
+.cart_quantity{
+  border: none;
+  width: 20px;
+  text-align: center;
+  align-self: center;
+}
+
+
+.button_delete{
+  font-size: 16px;
+  padding: 0;
+  border-radius: 5px;
+  box-shadow: 0;
+  border: 0;
+  color: rgb(241, 12, 12);
+  background-color: rgba(255, 255, 255, 0);
+  
+}
+
+td p{
+  margin: 0;
+}
+
+td{
+  vertical-align: middle;
+}
+
+.td-total p{
+  width: 80px;
+}
+      

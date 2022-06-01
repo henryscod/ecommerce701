@@ -1,0 +1,328 @@
+/* INDEX 
+
+    0-Root & variables gobales
+    1-Header
+    2-Carousel
+    3-Separador
+    4-Ads
+    5-Filter
+    6-Products
+  
+
+
+
+    -BREAKOUTS
+
+*/
+
+
+
+/*********************************************  
+         0-Root & variables gobales  
+**********************************************/
+
+@import url(checkout.css);
+
+:root{
+    --color__primary: #0077cc;
+    --color__fucsia: #ff1470;
+    --color__green: #6dc72e;
+    --color__orange: #ffa207; 
+    
+}
+
+body{
+    font-family: sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.btn-outline-primary{
+    color: var(--color__primary);
+    border: var(--color__primary) solid 1px;
+    padding: 2px 0;
+}
+
+.btn-outline-primary:hover{
+    color: #fff;
+    border: var(--color__primary) solid 1px;
+    background-color: var(--color__primary);
+}
+
+.btn-primary{
+    color: #fff;
+    background-color: var(--color__primary);
+    border: var(--color__primary) solid 1px;
+    padding: 2px 0;
+}
+
+
+
+
+
+/********************* 
+        1-Header  
+**********************/
+
+.button__blue{
+    color: #fff;
+    background-color: var(--color__primary);
+}
+
+.input__search{
+    border-radius: 25px 0px 0px 0px;
+    border: solid #0077cc  1px;
+}
+
+
+.button__search{
+    border-radius: 0px 0px 25px 0px;
+    border: solid #0077cc  1px;
+}
+
+.button__search:hover{
+    color: #fff;
+    background-color: var(--color__primary);
+    border: solid #0077cc  3px;
+}
+
+.button__cart{
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--color__primary);
+}
+
+
+/********************* 
+       2- Carousel  
+**********************/
+
+#carousel{
+    
+    max-height: 350px;
+}
+
+.carousel-item img{
+    border-radius: 40px 0px 40px 0px;
+}
+
+
+/********************* 
+       3- Separador 
+**********************/
+
+.separador{
+    border-radius: 10px 10px 10px 10px;
+    color: #fff;
+    background-color: var(--color__primary);
+
+}
+
+.separador p {
+    margin-bottom: 0;
+    margin-right: 15px;
+   
+}
+
+.separador span {
+    margin-bottom: 0;
+    margin-left: 5px;
+    
+} 
+
+
+
+/********************* 
+       4- Ads  
+**********************/
+  
+
+.head__title{
+    border-bottom: #d6d7d7 solid 1px;
+    font-weight: 600;
+}
+
+.carousel__ads img{
+    max-width: 180px;
+    max-height: 180px;
+}
+
+.test img{
+    border-radius: 40px 0px 40px 0px;
+    margin: 0;  
+    
+}
+
+
+/********************* 
+       5- Filter  
+**********************/
+
+.filter__button{
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--color__primary);
+}
+
+.filter__button:hover{
+    text-shadow: #434343a0 3px 3px 10px;
+}
+
+
+.filter__collapse .sidebar{
+    background: rgb(255, 255, 255);
+    position: fixed;
+    top:250px;
+    left: 0;
+    width: 250px;
+    height: 600px;
+    padding: 20px 0;
+    z-index: 10;
+    transition: all 0.5s ease;
+    border-radius: 0px 100px 250px 0px;
+    box-shadow: 2px 2px 3px #0077cc;
+}
+
+.sidebar{
+    color: #808080;
+}
+
+.sidebar input{
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.sidebar .check__active{
+    color: var(--color__primary);
+    font-weight: 600;
+
+}
+
+.sidebar label:hover{
+    color: var(--color__primary);
+    font-weight: 600;
+    
+}
+
+.sidebar input:hover,
+.sidebar .active input{
+    box-shadow: 0px 0px 4px 0 var(--color__primary);
+}
+
+
+  body.active .filter__collapse .sidebar{
+    left: -260px;
+}
+
+
+
+
+
+/********************* 
+       6- Products  
+**********************/
+
+.card-body{
+    display: table;
+    border-top: #d6d6d7 solid 1px;
+    padding: 5px 5px 5px 5px;
+}
+
+.table_container{
+    display: table-row;
+    
+}
+
+.table_cell-title{
+    display: table-cell;
+    height: 55px;
+}
+
+.table_cell{
+    display: table-cell;
+    
+}
+
+.card{
+    margin: 10px 10px 10px 10px;
+    max-width: 200px;
+    min-height: 310.39px;
+    max-height: 310.40px;   
+}
+
+
+.card img{
+    max-height: 200px;
+    max-width: 200px;
+   
+}
+
+
+.card-title{
+    font-size: 12px;
+}
+
+.price p{
+    font-size: 20px;
+    color: var(--color__primary);
+    margin: 0 0 5px 0;
+}
+
+.card:hover{
+    box-shadow: 2px 1px 2px 1px #181818b3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************* 
+      BREAKOUTS  
+**********************/
+
+@media screen and (max-width:800px) {
+
+
+    .head__title{
+        font-size: 20px;
+        border-bottom: #d6d7d7 solid 1px;
+        font-weight: 600;
+    }
+
+    .carousel__ads img{
+        max-width: 170px;
+        max-height: 170px;
+    }
+ 
+    tbody{
+        font-size: 11px;   
+    }
+   
+    .td-total p{
+        width: 60px;
+      }
+        
+    
+    
+
+
+
+
+
+
+}
