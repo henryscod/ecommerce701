@@ -235,6 +235,8 @@
                     
                     e.cantidad   = ++e.cantidad
                     e.total      = e.precio*e.cantidad
+                    e.total      = e.total.toFixed(2);
+                    
                 items.indexOf(e,e)
 
                 localStorage.setItem("item", JSON.stringify(items))
@@ -254,6 +256,7 @@
                 
                     e.cantidad    = --e.cantidad
                     e.total      = e.precio*e.cantidad
+                    e.total      = e.total.toFixed(2);
 
                     items.indexOf(e,e)
 
@@ -327,6 +330,8 @@ function borrarItem() {
                     return prev + next
                 
                 }, 0);
+
+                sum = sum.toFixed(2);
 
                 totalPago.innerHTML =
                     `<th></th>
