@@ -10,10 +10,7 @@
     <link rel="stylesheet" href="recursos/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
     <link rel="stylesheet" href="recursos/icons/normalize.css">
     <link rel="stylesheet" href="css/main.css" />
-
     <title>Carrito de compras</title>
-
-
 </head>
 
 <body class="bg-light container">
@@ -62,11 +59,9 @@
             </div>
 
 
-
-
             <!-- Datos personales y de envio  -->
 
-            <div class="info col-md-5 mt-5 py-5">
+            <div class="info col-md-5 mt-md-5 py-md-5">
                 <div class="mb-3">
                     <p class="h4 fw-bold">
                          Datos personales y envío 
@@ -155,13 +150,10 @@
                             </div>
                         </div>
 
-
-
                     <hr class="my-4">
 
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Enviar pedido</button>
                 </form>
-
 
             </div>
 
@@ -200,6 +192,7 @@
     <script src="recursos/jquery-3.6.0.min.js"></script>
     <script src="recursos/bootstrap-5/js/bootstrap.min.js"></script>
     <script src="recursos/bootstrap-5/js/bootstrap.bundle.min.js"></script>
+    <script src="recursos/bootstrap-5/js/bootstrap.bundle.min.js.map"></script>
     <script src="recursos/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
     <script src="recursos/icons/all.js"></script>
     <script src="js/main.js"></script>
@@ -213,10 +206,10 @@
         insertarTabla();
         cantItemsTable();
         getTotal();            
-            };
+        };
 
-      //  Al cargar elementos del DOM inserta en la tabla lo que haya en localstorage por si acaso
-        //   addEventListener('DOMContentLoaded', insertarTabla);
+    //    Al cargar elementos del DOM inserta en la tabla lo que haya en sessionStorage por si acaso
+    //       addEventListener('DOMContentLoaded', insertarTabla);
 
 
      // Sumar y restar productos en tabla
@@ -226,7 +219,7 @@
     // console.log(e);
 
         let nombreProducto  = e.path[3].childNodes[1].innerHTML;
-        let items           = JSON.parse(localStorage.getItem("item"))
+        let items           = JSON.parse(sessionStorage.getItem("item"))
 
         if (e.target.innerText === '+') {
             items.map((e) =>{
@@ -239,7 +232,7 @@
                     
                 items.indexOf(e,e)
 
-                localStorage.setItem("item", JSON.stringify(items))
+                sessionStorage.setItem("item", JSON.stringify(items))
                 
                     insertarTabla();
                     cantItemsTable();
@@ -260,7 +253,7 @@
 
                     items.indexOf(e,e)
 
-                    localStorage.setItem("item", JSON.stringify(items))
+                    sessionStorage.setItem("item", JSON.stringify(items))
                 
                     insertarTabla();
                     cantItemsTable();
@@ -272,55 +265,53 @@
 
 
 
-// Contar cuantos items hay en el carrito checkout-table
-const cantItemsTable = () => {
-    let itemsCart = JSON.parse(localStorage.getItem("item"));
-    let divTable = document.querySelector(".cart_count");
-    let cantItems = itemsCart.length;
+    // Contar cuantos items hay en el carrito checkout-table
+    const cantItemsTable = () => {
+        let itemsCart = JSON.parse(sessionStorage.getItem("item"));
+        let divTable = document.querySelector(".cart_count");
+        let cantItems = itemsCart.length;
 
-  divTable.innerHTML = "";
+    divTable.innerHTML = "";
 
-  if (cantItems > 0) {
-    divTable.innerHTML = 
-    `
-        <span class="text-primary">Su pedido</span>
-        <span class="badge bg-primary rounded-pill"> ${cantItems} <i class="fa-solid fa-cart-shopping"></i></span>
-    `;
-  } else {
-    console.log("no se pudo cargar items");
-  }
-};
+    if (cantItems > 0) {
+        divTable.innerHTML = 
+        `
+            <span class="text-primary">Su pedido</span>
+            <span class="badge bg-primary rounded-pill"> ${cantItems} <i class="fa-solid fa-cart-shopping"></i></span>
+        `;
+    } else {
+        console.log("no se pudo cargar items");
+    }
+    };
 
 
 
     // borrar items del carrito  
 
-function borrarItem() {
-  document.getElementById("products__table").addEventListener("click", (e) =>{
+    function borrarItem() {
+    document.getElementById("products__table").addEventListener("click", (e) =>{
+        
+    let productos= JSON.parse(sessionStorage.getItem('item'));
+    let productoDeleted = e.path[4].children[0].innerHTML
+
+    let res = productos.filter(e => e.nombre != productoDeleted );
+        // console.log(res);  
+
+    sessionStorage.setItem("item", JSON.stringify(res));
+
+      insertarTabla();
+      cantItemsTable();
+      getTotal();
+    })
     
-  let productos= JSON.parse(localStorage.getItem('item'));
-  let productoDeleted = e.path[4].children[0].innerHTML
-
-  let res = productos.filter(e => e.nombre != productoDeleted );
-    // console.log(res);  
-
-  localStorage.setItem("item", JSON.stringify(res));
-
-//   insertarTabla();
-//   cantItemsTable();
-    
-  })
-  
-
-}
-
+    }
 
 
         // sumar las cantidades del carrito y dar el total 
 
         function getTotal(){
             let totalPago   = document.querySelector('.total_pago');
-            let items       = JSON.parse(localStorage.getItem("item"));
+            let items       = JSON.parse(sessionStorage.getItem("item"));
             
             let temp = items.map(function(item){
                 return parseFloat(item.total);
@@ -336,23 +327,8 @@ function borrarItem() {
                 totalPago.innerHTML =
                     `<th></th>
                     <th>Total a pagar</th>
-                    <th class="text-center">Bs.${sum}</th>`
-              
+                    <th class="text-center">Bs.${sum}</th>`  
         }
 
-
-
-
-
-
-
-
-
-  function accionesBorrar(){
-      borrarItem();
-      insertarTabla();
-      cantItemsTable();
-      getTotal();
-  }
 
 </script>

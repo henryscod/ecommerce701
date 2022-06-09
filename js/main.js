@@ -4,9 +4,9 @@
 
 const divProducto = document.querySelector(".product__container");
 const tablaPedido = document.querySelector("#products__table");
-// let itemsCart     = JSON.parse(localStorage.getItem("item"));
 
-let arrayProducto = [];
+
+// let arrayProducto = [];
 
 
 
@@ -18,36 +18,33 @@ const crearProducto = (nombreProducto, precio, cantidad,total) => {
     precio: precio,
     cantidad: 1,
     total: precio, 
-  };
+  }
 
   arrayProducto.push(producto);
-};
+}
 
 
-
-//   Guardar producto en localstorage
+//   Guardar producto en sessionstorage
 
 const guardarDB = () => {
-  localStorage.setItem("item", JSON.stringify(arrayProducto));
+  sessionStorage.setItem("item", JSON.stringify(arrayProducto));
 };
 
-// const guardarCart = () =>{
-//   let cartArray = JSON.parse(localStorage.getItem("item"));
-//   localStorage.setItem("cart", JSON.stringify(cartArray));
-// }
+const cerrar = () => {
+  sessionStorage.removeItem('item');
+}
 
 
 // Insertar datos en tabla
 
 const insertarTabla = () => {
   tablaPedido.innerHTML = "";
-  let itemsCart = JSON.parse(localStorage.getItem("item"));
+  let itemsCart = JSON.parse(sessionStorage.getItem("item"));
 
   // console.log("arrayProducto");
 
   if (itemsCart === null) {
-    arrayProducto = [];
-    // console.log('nada')
+    console.log('no hay productos');
   } else {
 
       itemsCart.forEach((element) => {
@@ -63,46 +60,132 @@ const insertarTabla = () => {
                         
                     </td>
                     <td class="text-center td-total"><p>Bs.${element.total}</p> </td>
-                    <td class="text-center "><button class="button_delete" onclick="accionesBorrar()"><i class="fa-solid fa-trash "></i></button></td>
+                    <td class="text-center "><button class="button_delete" onclick="borrarItem()"><i class="fa-solid fa-trash "></i></button></td>
                 </tr>`;
       });
     }
   };
 
- // <input class="cart_quantity_input" type="text" value=${element.cantidad} size="1" disabled>
 
-// Listeners para guardar productos
 
-divProducto.addEventListener("click", (e) => {
-  e.preventDefault();
-  // console.log(e);
+  // Listeners para guardar productos
 
-  let itemsCart      = JSON.parse(localStorage.getItem("item"));
-  let nombreProducto = e.path[1].childNodes[1].innerText;
-  let precio         = e.path[1].childNodes[3].children[1].innerText;
-  // console.log(itemsCart);
+    divProducto.addEventListener("click", (e) => {
+      e.preventDefault();
+      // console.log(e);
 
-  if (e.target.innerHTML === "Agregar") {
-    if (itemsCart == null) {
-      crearProducto(nombreProducto,precio);
-      guardarDB();
-      cantItems();
-    } else {
-      let res = itemsCart.find(element => element.nombre == nombreProducto)
-      if (res === undefined){
-        crearProducto(nombreProducto,precio);
-        guardarDB();
-        cantItems();
+      let itemsCart      = JSON.parse(sessionStorage.getItem("item")) 
+      arrayProducto      = itemsCart                                 
+
+      
+      // console.log(res.nombre);
+      if (e.target.innerHTML === "Agregar") {
+        let nombreProducto = e.path[1].childNodes[1].innerText;
+        let precio         = e.path[1].childNodes[3].children[1].innerText
+        if (arrayProducto === null) {
+          arrayProducto = []
+          crearProducto(nombreProducto,precio);
+          guardarDB();
+          cantItems();
+        } else {
+          
+          let res = arrayProducto.find(element => element.nombre == nombreProducto)
+
+          if (res === undefined){
+
+            crearProducto(nombreProducto,precio);
+            guardarDB()
+            cantItems()
+          }
+        }
+
+          // Cambiar boton agregar por sumar y restar
+        let addRest__div = e.path[1].childNodes[7];
+        // console.log(nombreProducto);
+        
+        if (arrayProducto.length > 0 && e.target.innerHTML === "Agregar") {
+          e.path[0].classList.replace("d-block", "d-none")
+
+          arrayProducto.map((element) =>{
+              if(nombreProducto === element.nombre){
+                
+                addRest__div.innerHTML= `
+                <a class="cart_cantidad_restar btn btn-primary" href="#"> - </a>
+                <p class="cart_quantity">${element.cantidad}</p>
+                <a class="cart_cantidad_sumar btn btn-primary" href="#"> + </a>
+                `
+              }
+          
+          })
+        }
+        
       }
-    }
-  }
-});
+      
+      
+      // sumar y restar cantidad del mismo productos al carrito
+          let cart         = JSON.parse(sessionStorage.getItem("item")); //Llamar items nuevamente despues de llenarlo
+          let producto  = e.path[2].childNodes[1].innerText;
+          let contenedor__sumaResta = e.path[1]
+          if (e.target.innerText === '+') {
+            // console.log(producto);
+            cart.map((e) =>{
+            
+                if (producto == e.nombre) {
+                    
+                    e.cantidad   = ++e.cantidad
+                    e.total      = e.precio*e.cantidad
+                    e.total      = e.total.toFixed(2);
+
+                    contenedor__sumaResta.innerHTML= `
+                    <a class="cart_cantidad_restar btn btn-primary" href="#"> - </a>
+                    <p class="cart_quantity">${e.cantidad}</p>
+                    <a class="cart_cantidad_sumar btn btn-primary" href="#"> + </a>
+                    `
+
+                    
+                cart.indexOf(e,e)
+
+                sessionStorage.setItem("item", JSON.stringify(cart))
+                
+                    
+                }
+            })
+
+        } else 
+
+        if (e.target.innerText === '-') {
+            cart.map((e) =>{
+
+                if (producto == e.nombre) {
+                
+                    e.cantidad    = --e.cantidad
+                    e.total      = e.precio*e.cantidad
+                    e.total      = e.total.toFixed(2);
+
+                    contenedor__sumaResta.innerHTML= `
+                    <a class="cart_cantidad_restar btn btn-primary" href="#"> - </a>
+                    <p class="cart_quantity">${e.cantidad}</p>
+                    <a class="cart_cantidad_sumar btn btn-primary" href="#"> + </a>
+                    `
+                    cart.indexOf(e,e)
+
+                    sessionStorage.setItem("item", JSON.stringify(cart))
+                
+                }   
+            }) 
+        }
+
+             
+    });
+
+
+
 
 
   // Contador de items en cart-index
 const cantItems = () => {
   let divCart = document.querySelector(".button__cart");
-  let cant = JSON.parse(localStorage.getItem("item")).length;
+  let cant = JSON.parse(sessionStorage.getItem("item")).length;
   divCart.innerHTML = "";
 
   if (cant > 0) {
@@ -116,6 +199,11 @@ const cantItems = () => {
 };
 
 
+    
+
+
+ // // Accion al cerrar la ventana
+  // window.addEventListener("beforeunload", cerrar);
 
 
 
