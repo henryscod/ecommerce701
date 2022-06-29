@@ -16,9 +16,10 @@
 <body class="bg-light container">
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand fs-6 text-primary" href="index.html"> <i class="fa-solid fa-reply"></i> Volver a la tienda </a>
+            <a class="navbar-brand fs-6 text-primary" href="index.html"> <i class="fa-solid fa-reply"></i> Volver a la
+                tienda </a>
         </div>
-      </nav>
+    </nav>
 
 
     <section class="">
@@ -45,7 +46,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Nombre</th>
-                            <th scope="col" >Cant</th>
+                            <th scope="col">Cant</th>
                             <th scope="col">Total</th>
                         </tr>
                     </thead>
@@ -53,9 +54,10 @@
 
                     </tbody>
                     <tr class="total_pago">
-                        
+
                     </tr>
                 </table>
+                
             </div>
 
 
@@ -64,8 +66,8 @@
             <div class="info col-md-5 mt-md-5 py-md-5">
                 <div class="mb-3">
                     <p class="h4 fw-bold">
-                         Datos personales y envío 
-                         
+                        Datos personales y envío
+
                     </p>
                 </div>
 
@@ -106,7 +108,7 @@
                                 required="">
                             <label class="form-check-label" for="delivery">Delivery</label>
                         </div>
-                        
+
                     </div>
 
                     <!-- <div class="form-check">
@@ -117,40 +119,44 @@
                     <hr class="my-4">
 
                     <h4 class="mb-1">Método de pago <i class="fa-solid fa-credit-card"></i></h4>
-                        <div class="my-2 col-6">
-                            <div class="form-check">
-                                <input id="debito" name="paymentMethod" type="radio" class="form-check-input" checked=""
-                                    required="">
-                                <label class="form-check-label" for="debito">Trajeta de debido</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="credito" name="paymentMethod" type="radio" class="form-check-input"
-                                    required="">
-                                <label class="form-check-label" for="credito">Tarjeta de crédito</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="pagoMovil" name="paymentMethod" type="radio" class="form-check-input"
-                                    required="">
-                                <label class="form-check-label" for="pagoMovil">Pago móvil</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="zelle" name="paymentMethod" type="radio" class="form-check-input"
-                                    required="">
-                                <label class="form-check-label" for="zelle">Zelle</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="binance" name="paymentMethod" type="radio" class="form-check-input"
-                                    required="">
-                                <label class="form-check-label" for="binance">Binance</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input"
-                                    required="">
-                                <label class="form-check-label" for="paypal">Paypal</label>
-                            </div>
+                    <div class="my-2 col-6">
+                        <div class="form-check">
+                            <input id="debito" name="paymentMethod" type="radio" class="form-check-input" checked=""
+                                required="">
+                            <label class="form-check-label" for="debito">Trajeta de debido</label>
                         </div>
+                        <div class="form-check">
+                            <input id="credito" name="paymentMethod" type="radio" class="form-check-input" required="">
+                            <label class="form-check-label" for="credito">Tarjeta de crédito</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="pagoMovil" name="paymentMethod" type="radio" class="form-check-input"
+                                required="">
+                            <label class="form-check-label" for="pagoMovil">Pago móvil</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="zelle" name="paymentMethod" type="radio" class="form-check-input" required="">
+                            <label class="form-check-label" for="zelle">Zelle</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="binance" name="paymentMethod" type="radio" class="form-check-input" required="">
+                            <label class="form-check-label" for="binance">Binance</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="">
+                            <label class="form-check-label" for="paypal">Paypal</label>
+                        </div>
+                    </div>
 
                     <hr class="my-4">
+                    <h4 class="mb-1">Solicitud de productos <i class="fa-solid fa-paper-plane"></i></h4>
+                    <div class="my-2 col-6">
+                        <div class="form-check">
+                            <div class="mb-3">
+                                <textarea class="form-control solicitud__area" id="solicitud" rows="2" placeholder="Igrese productos requeridos que no aparecen en el catálogo"></textarea>
+                              </div>
+                        </div>
+                    </div>
 
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Enviar pedido</button>
                 </form>
@@ -202,65 +208,75 @@
 
 
 <script>
-      window.onload = () => { 
+    window.onload = () => {
         insertarTabla();
         cantItemsTable();
-        getTotal();            
-        };
+        getTotal();
+    };
 
     //    Al cargar elementos del DOM inserta en la tabla lo que haya en sessionStorage por si acaso
     //       addEventListener('DOMContentLoaded', insertarTabla);
 
 
-     // Sumar y restar productos en tabla
+    // Sumar y restar productos en tabla
 
-  tablaPedido.addEventListener('click', (e) => {
-    e.preventDefault();
-    // console.log(e);
+    tablaPedido.addEventListener('click', (e) => {
+        e.preventDefault();
+        // console.log(e);
 
-        let nombreProducto  = e.path[3].childNodes[1].innerHTML;
-        let items           = JSON.parse(sessionStorage.getItem("item"))
+        let nombreProducto = e.path[3].childNodes[1].innerHTML;
+        let items = JSON.parse(sessionStorage.getItem("item"))
 
         if (e.target.innerText === '+') {
-            items.map((e) =>{
+            items.map((e) => {
 
                 if (nombreProducto == e.nombre) {
-                    
-                    e.cantidad   = ++e.cantidad
-                    e.total      = e.precio*e.cantidad
-                    e.total      = e.total.toFixed(2);
-                    
-                items.indexOf(e,e)
 
-                sessionStorage.setItem("item", JSON.stringify(items))
-                
+                    e.cantidad = ++e.cantidad
+                    e.total = e.precio * e.cantidad
+                    e.total = e.total.toFixed(2);
+
+                    items.indexOf(e, e)
+
+                    sessionStorage.setItem("item", JSON.stringify(items))
+
                     insertarTabla();
                     cantItemsTable();
                     getTotal();
                 }
             })
 
-        } else 
+        } else
 
-        if (e.target.innerText === '-') {
-            items.map((e) =>{
+            if (e.target.innerText === '-') {
+                items.map((e) => {
 
-                if (nombreProducto == e.nombre) {
-                
-                    e.cantidad    = --e.cantidad
-                    e.total      = e.precio*e.cantidad
-                    e.total      = e.total.toFixed(2);
+                    if (nombreProducto == e.nombre) {
 
-                    items.indexOf(e,e)
+                        e.cantidad = --e.cantidad
+                        e.total = e.precio * e.cantidad
+                        e.total = e.total.toFixed(2);
 
-                    sessionStorage.setItem("item", JSON.stringify(items))
-                
-                    insertarTabla();
-                    cantItemsTable();
-                    getTotal();
-                }   
-            }) 
-        }
+                        items.indexOf(e, e)
+
+                        sessionStorage.setItem("item", JSON.stringify(items))
+
+                        if (e.nombre === nombreProducto && e.cantidad === 0) {
+                            let i = JSON.parse(sessionStorage.getItem("item"));
+                            // console.log('se cumple la condicion', e.nombre);
+                            let res = i.filter(e => e.nombre != nombreProducto);
+                            sessionStorage.setItem("item", JSON.stringify(res));
+
+                        }
+
+                        insertarTabla();
+                        cantItemsTable();
+                        getTotal();
+
+                    }
+
+                })
+            }
     })
 
 
@@ -269,19 +285,25 @@
     const cantItemsTable = () => {
         let itemsCart = JSON.parse(sessionStorage.getItem("item"));
         let divTable = document.querySelector(".cart_count");
-        let cantItems = itemsCart.length;
 
-    divTable.innerHTML = "";
 
-    if (cantItems > 0) {
-        divTable.innerHTML = 
-        `
-            <span class="text-primary">Su pedido</span>
-            <span class="badge bg-primary rounded-pill"> ${cantItems} <i class="fa-solid fa-cart-shopping"></i></span>
-        `;
-    } else {
-        console.log("no se pudo cargar items");
-    }
+        let temp = itemsCart.map(function (item) {
+            return parseFloat(item.cantidad);
+        });
+
+        let sumItems = temp.reduce(function (prev, next) {
+            return prev + next
+
+        }, 0);
+
+
+        if (sumItems > 0) {
+            divTable.innerHTML = `
+                <span class="text-primary">Su pedido</span>
+                <span class="badge bg-primary rounded-pill"> ${sumItems} <i class="fa-solid fa-cart-shopping"></i></span>`;
+        } else {
+            console.log("no se pudo cargar total de items");
+        }
     };
 
 
@@ -289,46 +311,65 @@
     // borrar items del carrito  
 
     function borrarItem() {
-    document.getElementById("products__table").addEventListener("click", (e) =>{
-        
-    let productos= JSON.parse(sessionStorage.getItem('item'));
-    let productoDeleted = e.path[4].children[0].innerHTML
+        document.getElementById("products__table").addEventListener("click", (e) => {
 
-    let res = productos.filter(e => e.nombre != productoDeleted );
-        // console.log(res);  
+            let productos = JSON.parse(sessionStorage.getItem('item'));
+            let productoDeleted = e.path[4].children[0].innerHTML
 
-    sessionStorage.setItem("item", JSON.stringify(res));
+            let res = productos.filter(e => e.nombre != productoDeleted);
+            // console.log(res);  
 
-      insertarTabla();
-      cantItemsTable();
-      getTotal();
-    })
-    
+            sessionStorage.setItem("item", JSON.stringify(res));
+
+            insertarTabla();
+            cantItemsTable();
+            getTotal();
+        })
+    }
+
+    const delAtCero = () => {
+        document.getElementById("products__table").addEventListener("click", (e) => {
+
+            let productos = JSON.parse(sessionStorage.getItem('item'));
+            let productoDeleted = e.path[4].children[0].innerHTML
+            console.log(productoDeleted);
+            if (e.nombre === productoDeleted && e.cantidad === 0) {
+                let res = productos.filter(e => e.nombre != productoDeleted);
+
+            }
+            // console.log(res);  
+
+            // sessionStorage.setItem("item", JSON.stringify(res));
+
+            // insertarTabla();
+            // cantItemsTable();
+            // getTotal();
+        })
     }
 
 
-        // sumar las cantidades del carrito y dar el total 
+    // sumar las cantidades del carrito y dar el total 
 
-        function getTotal(){
-            let totalPago   = document.querySelector('.total_pago');
-            let items       = JSON.parse(sessionStorage.getItem("item"));
-            
-            let temp = items.map(function(item){
-                return parseFloat(item.total);
-            });
+    function getTotal() {
+        let totalPago = document.querySelector('.total_pago');
+        let items = JSON.parse(sessionStorage.getItem("item"));
 
-            let sum = temp.reduce(function(prev, next){
-                    return prev + next
-                
-                }, 0);
+        let temp = items.map(function (item) {
+            return parseFloat(item.total);
+        });
 
-                sum = sum.toFixed(2);
+        let sum = temp.reduce(function (prev, next) {
+            return prev + next
 
-                totalPago.innerHTML =
-                    `<th></th>
+        }, 0);
+
+        sum = sum.toFixed(2);
+
+        totalPago.innerHTML =
+            `<th></th>
                     <th>Total a pagar</th>
-                    <th class="text-center">Bs.${sum}</th>`  
-        }
+                    <th class="text-center">Bs.${sum}</th>`
+    }
 
 
 </script>
