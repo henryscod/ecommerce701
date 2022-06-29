@@ -14,7 +14,7 @@
     <title>Farmacia 701</title>
 </head>
 
-<body class="active bg-light">
+<body class="active anuncio delivery bg-light">
 
     <!-- nav bar  -->
 
@@ -28,18 +28,42 @@
 
                 <input class="form-control form-control-dark input__search " type="text"
                     placeholder="Busca tu producto aqui" aria-label="Search" />
-                <a href="#" class="btn button__blue button__search"><i class="fa-solid fa-search"></i></a>
+                <a href="#" class="btn button__blue button__search" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-search"></i></a>
             </div>
 
             <div class="navbar-nav cart__icon">
                 <a href="checkout.html" type="button" class="position-relative button__cart">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span
-                        class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-secondary"></span>
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-secondary " ></span>
                 </a>
             </div>
         </nav>
     </header>
+
+
+      <!-- ANUNCIO -->
+
+    <section class="anuncio_collapse">
+        <div class="sidebar">
+            <p class="text-center h6 text-primary text-uppercase fw-bold">Prueba nuestro buscador</p>
+            <p class=" mx-4 text-secondary">Haz tu búsqueda por alfabeto, nombre o componente activo</p>
+        </div>
+
+        <div class="delivery_gratis">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn-close p-2 h6" onclick="quitar_ad()"></button>
+            </div>
+            <div class="oferta text-center">
+                <p class="h4 text-uppercase text-light fw-bold">Envio gratis</p>
+                <span class="text-white fs-1"><i class="fa-solid fa-truck-fast"></i></span>
+                <p class="text-dark">Para compras +10$</p>
+                <p class="text-dark">en Ciudad Bolívar</p>
+            </div>
+        </div>
+    </section>
+
+
 
 
 
@@ -80,7 +104,7 @@
     <section class="separador mt-5 container py-2 bg-dark">
         <div class="navbar">
             <div class="container d-flex justify-content-center align-self-center ">
-                <span class="h6 text-uppercase"><img src="img/logo.png" alt=""> <i class="fa-solid fa-plus fs-3"></i> <img src="img/zoom.png" alt=""></span>
+                <span class="h6 text-uppercase"><img src="img/logo.png" alt="">  <i class="fa-solid fa-plus fs-3"></i>  <img src="img/zoom.png" alt=""></span>
                 <span class="h6 text-uppercase mt-2 fw-bold text-white"> Llegamos a toda Venezuela <i class="fa-solid fa-truck-fast"></i></span>
             </div>
         </div>
@@ -102,9 +126,7 @@
             <div class="test"><img src="img/pubs/4.png" alt=""></div>
             <div class="test"><img src="img/pubs/5.png" alt=""></div>
             <div class="test"><img src="img/pubs/6.png" alt=""></div>
-
         </div>
-
     </section>
 
 
@@ -630,18 +652,29 @@
             autoplayHoverPause: true
         });
 
-        let filter__button = document.querySelector(".filter__button");
+        // let filter__button = document.querySelector(".filter_collapse");
 
-        filter__button.addEventListener("click", function () {
-            document.querySelector("body").classList.toggle("active");
+        // filter__button.addEventListener("click", function () {
+        //     document.querySelector("body").classList.remove("active");
+            
+        // })
+
+
+            let anuncio = document.querySelector("body");
+
+        anuncio.addEventListener("click", function () {
+            document.querySelector("body").classList.remove("anuncio");
+            
         })
-
+ 
     })
 
+        const quitar_ad = () => {
+            document.querySelector("body").classList.remove("delivery");
+        }
 
 
-
-    //     
+  
     // // Al iniciar inserta en la tabla lo que haya en sessionStorage por si acaso
     addEventListener('DOMContentLoaded', itemsCount);
 

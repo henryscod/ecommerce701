@@ -2,11 +2,12 @@
 
     0-Root & variables gobales
     1-Header
-    2-Carousel
-    3-Separador
-    4-Ads
-    5-Filter
-    6-Products
+    2- anuncios
+    3-Carousel
+    4-Separador
+    5-Ads
+    6-Filter
+    7-Products
   
 
 
@@ -25,7 +26,7 @@
 
 :root{
     --color__primary: #0077cc;
-    --color__fucsia: #ff1470;
+    --color__fucsia: #ff146edf;
     --color__green: #6dc72e;
     --color__orange: #ffa207; 
     
@@ -95,8 +96,55 @@ a{
 }
 
 
+/************************ 
+    2- anuncios   
+*************************/
+.anuncio_collapse{
+    font-size: 12px;
+}
+
+
+.anuncio_collapse .sidebar{
+    background: rgba(255, 255, 255, 0.978);
+    position: fixed;
+    top:80px;
+    left: -300px;
+    width: 280px;
+    height: 100px;
+    padding: 20px 0;
+    z-index: 2000;
+    transition: all 0.5s ease;
+    border-radius: 30px 0px 30px 30px;
+    box-shadow: 2px 2px 3px #0077cc;
+}
+
+body.anuncio .anuncio_collapse .sidebar {
+    left: 30px;
+}
+
+.delivery_gratis{
+    background: var(--color__fucsia);
+    position: fixed;
+    bottom:80px;
+    right: -220px;
+    width: 220px;
+    height: 200px;
+    padding: 0px 0;
+    z-index: 2000;
+    border-radius: 100px 0px 100px 100px;
+}
+.oferta p{
+    margin: 0;
+}
+
+body.delivery .anuncio_collapse .delivery_gratis{
+    right: 30px;
+}
+
+
+
 /********************* 
-       2- Carousel  
+       3- Carousel  
 **********************/
 
 #carousel{
@@ -110,7 +158,7 @@ a{
 
 
 /********************* 
-       3- Separador 
+    4- Separador 
 **********************/
 
 .separador{
@@ -130,16 +178,21 @@ a{
     margin-bottom: 0;
     margin-left: 5px;
     
-} 
+}
+
+
+.separador span img{
+    margin-right: 20px;
+    margin-left: 20px;
+}
 
 .separador img{
     max-width: 50px;
 }
 
 
-
 /********************* 
-       4- Ads  
+       5- Ads  
 **********************/
   
 
@@ -161,10 +214,10 @@ a{
 
 
 /********************* 
-       5- Filter  
+       6- Filter  
 **********************/
 
-.filter__button{
+/* .filter__button{
     text-decoration: none;
     cursor: pointer;
     color: var(--color__primary);
@@ -218,14 +271,12 @@ a{
 
   body.active .filter__collapse .sidebar{
     left: -260px;
-}
-
-
+} */
 
 
 
 /********************* 
-       6- Products  
+       7- Products  
 **********************/
 
 .card-body{
@@ -287,6 +338,8 @@ a{
 .card:hover{
     box-shadow: 2px 1px 2px 1px #181818b3;
 }
+
+
 
 /********************* 
       BREAKOUTS  
