@@ -18,33 +18,39 @@
 
     <!-- nav bar  -->
 
-    <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap  shadow py-3">
+    <header class="navbar navbar-light sticky-top bg-light  shadow py-3">
         <nav class="container">
             <a class="navbar-brand " href="#">
                 <img src="img/logo.png" alt="" width="50" height="50" />
             </a>
             
-            <div class="d-flex align-items-center col-8 justify-content-center">
-
+            <div class="d-flex align-items-center col-7 justify-content-center">
                 <input class="form-control form-control-dark input__search " type="text"
                     placeholder="Busca tu producto aqui" aria-label="Search" />
-                <a href="#" class="btn button__blue button__search" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-search"></i></a>
+                <a href="#" class="btn button__blue button__search"><i class="fa-solid fa-search"></i></a>
             </div>
-
+            
             <div class="navbar-nav cart__icon">
                 <a href="checkout.html" type="button" class="position-relative button__cart">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span
-                        class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-secondary " ></span>
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-secondary " ></span>
                 </a>
             </div>
+            
+            <div class="form-check form-switch d-flex flex-column" style="padding: 0;">
+                <img src="img/usa.png" class="img-fluid usa"   style="width: 25px;" alt="bandera usa">
+                <input class="form-check-input switch" style="width: 30px; " type="checkbox" role="switch" id="flexSwitchCheck2">
+                <label class="form-check-label text-primary mx-1" for="flexSwitchCheck2"> <span>Bs 5.8</span></label>
+            </div>
+           
         </nav>
     </header>
 
 
       <!-- ANUNCIO -->
 
-    <section class="anuncio_collapse">
+    <!-- <section class="anuncio_collapse">
         <div class="sidebar">
             <p class="text-center h6 text-primary text-uppercase fw-bold">Prueba nuestro buscador</p>
             <p class=" mx-4 text-secondary">Haz tu búsqueda por alfabeto, nombre o componente activo</p>
@@ -61,7 +67,7 @@
                 <p class="text-dark">en Ciudad Bolívar</p>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
 
@@ -101,11 +107,12 @@
 
 
     <!-- separador anuncio  -->
-    <section class="separador mt-5 container py-2 bg-dark">
+    <section class="separador mt-5 container py-2">
         <div class="navbar">
             <div class="container d-flex justify-content-center align-self-center ">
-                <span class="h6 text-uppercase"><img src="img/logo.png" alt="">  <i class="fa-solid fa-plus fs-3"></i>  <img src="img/zoom.png" alt=""></span>
-                <span class="h6 text-uppercase mt-2 fw-bold text-white"> Llegamos a toda Venezuela <i class="fa-solid fa-truck-fast"></i></span>
+                <span class="h6 text-uppercase mt-2 fw-bold text-d">unidos</span>
+                <span class="h6 text-uppercase"><img src="img/zoom.png" alt=""> <i class="fa-solid fa-plus"></i> <img src="img/logo.png" alt=""></span>
+                <span class="h6 text-uppercase mt-2 fw-bold text-d"> Delivery a nivel nacional <i class="fa-solid fa-truck-fast fs-4"></i></span>
             </div>
         </div>
     </section>
@@ -198,10 +205,6 @@
                 <a class="h5 text-right filter__button">Filtrar <i class="fa-solid fa-filter"></i></a>
             </div> -->
             
-            <div class="form-check form-switch d-flex justify-content-start">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck">
-                <label class="form-check-label text-primary mx-1" for="flexSwitchCheck"><img src="img/usa.png" class="img-fluid"   style="width: 35px;" alt="bandera usa"> <span>$ 5.8</span></label>
-            </div>
         </div>
 
 

@@ -156,6 +156,7 @@ divProducto.addEventListener("click", (e) => {
         if (e.nombre === producto && e.cantidad === 0) {
           let i = JSON.parse(sessionStorage.getItem("item"));
           let res = i.filter((e) => e.nombre != producto);
+
           sessionStorage.setItem("item", JSON.stringify(res));
           contenedor__sumaResta.innerHTML = "";
           addButton.classList.replace("d-none", "d-block");

@@ -95,6 +95,14 @@ a{
     color: var(--color__primary);
 }
 
+.switch{
+    transform: translatex(50px);
+}
+
+.usa{
+    transform: translatex(12px);
+}
+
 
 /************************ 
     2- anuncios   
@@ -163,8 +171,8 @@ body.delivery .anuncio_collapse .delivery_gratis{
 
 .separador{
     border-radius: 10px 10px 10px 10px;
-    color: #fff;
-    background-color: #fff;
+    color: rgb(5, 8, 110);
+    background-color: #97def3;
 
 }
 
